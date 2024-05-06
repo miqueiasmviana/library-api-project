@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 ruby "3.2.0"
 
+gem "tty-spinner"
+
+# A runtime developer console and IRB alternative with powerful introspection capabilities.
+gem 'pry', '~> 0.14.2'
+
 # Token based authentication for Rails JSON APIs. Designed to work with jToker and ng-token-auth.
 gem "devise_token_auth", ">= 1.2.0", git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'devise-i18n'
@@ -42,6 +47,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # A library for generating fake data such as names, addresses, and phone numbers.
+  gem 'faker'
 end
 
 group :development do
