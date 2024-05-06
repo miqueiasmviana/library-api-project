@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 ruby "3.2.0"
 
+# Token based authentication for Rails JSON APIs. Designed to work with jToker and ng-token-auth.
+gem "devise_token_auth", ">= 1.2.0", git: "https://github.com/lynndylanhurley/devise_token_auth"
+gem 'devise-i18n'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
