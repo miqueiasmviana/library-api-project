@@ -8,6 +8,9 @@ namespace :dev do
       # %x(rails dev:add_book_currents)
       %x(rails dev:add_books)
       %x(rails dev:add_authors)
+      %x(rails dev:add_publishing_companies)
+      %x(rails dev:add_kinds)
+
     else
       puts "Você não está em ambiente de desenvolvimento!"
     end
@@ -36,6 +39,28 @@ namespace :dev do
           name: Faker::Book.author,
           description: Faker::Lorem.paragraphs(number: 5).join,
           picture: "https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg"
+        )
+      end
+    end
+  end
+
+  desc "Cadastrando Editoras"
+   task add_publishing_companies: :environment do
+    show_spinner("cadastrando Editoras") do
+      10.times do |i|
+        PublishingCompany.create!(
+          company_name: Faker::Book.publisher
+        )
+      end
+    end
+  end
+
+  desc "Cadastrando Gêneros"
+   task add_kinds: :environment do
+    show_spinner("cadastrando Gêneros") do
+      10.times do |i|
+        Kind.create!(
+          genre: Faker::Book.genre
         )
       end
     end
