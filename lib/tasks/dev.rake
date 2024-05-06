@@ -7,12 +7,13 @@ namespace :dev do
       show_spinner("Migrando BD...") { %x(rails db:migrate) }
       # %x(rails dev:add_book_currents)
       %x(rails dev:add_books)
+      %x(rails dev:add_authors)
     else
       puts "Você não está em ambiente de desenvolvimento!"
     end
   end
 
-  desc "Cadastra os Livros"
+  desc "Cadastrando os Livros"
    task add_books: :environment do
     show_spinner("cadastrando livros") do
       100.times do |i|
@@ -21,7 +22,20 @@ namespace :dev do
           title: Faker::Book.title,
           description: Faker::Lorem.paragraphs(number: 5).join,
           pages: rand(100..500),
-          first_published: Faker::Date.between(from: '1800-01-01', to: '2006-01-01')
+          first_published: Faker::Date.between(from: '1980-01-01', to: '2006-01-01')
+        )
+      end
+    end
+  end
+
+  desc "Cadastrando Autores"
+   task add_authors: :environment do
+    show_spinner("cadastrando livros") do
+      100.times do |i|
+        Book.create!(
+          picture: "https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg",
+          name: Faker::Book.author,
+          description: Faker::Lorem.paragraphs(number: 5).join,
         )
       end
     end
