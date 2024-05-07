@@ -10,39 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_06_215358) do
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "cover"
-    t.string "title"
-    t.text "description"
-    t.integer "pages"
-    t.date "first_published"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "author_id"
-    t.index ["author_id"], name: "index_books_on_author_id"
-  end
-
-  create_table "kinds", force: :cascade do |t|
-    t.string "genre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "publishing_companies", force: :cascade do |t|
-    t.string "company_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2024_05_06_160816) do
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -68,5 +36,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_06_215358) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "books", "authors"
 end

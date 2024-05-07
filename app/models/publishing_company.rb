@@ -1,2 +1,0 @@
-class PublishingCompany < ApplicationRecord
-end
