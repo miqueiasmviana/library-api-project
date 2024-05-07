@@ -1,3 +1,4 @@
 class Book < ApplicationRecord
-  has_many :kind
+  has_many :kinds
+  belongs_to :author
 end
