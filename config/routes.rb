@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :publishing_companies
   resources :authors
   resources :kinds
   resources :books

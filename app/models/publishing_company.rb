@@ -1,0 +1,2 @@
+class PublishingCompany < ApplicationRecord
+end
