@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :kinds
-  resources :books
   mount_devise_token_auth_for 'User', at: 'auth'
 
   resource :auths, only: [:create]
