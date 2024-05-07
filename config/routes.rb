@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :kinds
-  resources :publishing_companies
-  resources :authors
   resources :books
   mount_devise_token_auth_for 'User', at: 'auth'
 
