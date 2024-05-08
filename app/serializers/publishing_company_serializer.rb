@@ -1,3 +1,3 @@
 class PublishingCompanySerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :company_name
 end
