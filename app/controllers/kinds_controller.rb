@@ -5,7 +5,7 @@ class KindsController < ApplicationController
   def index
     @kinds = Kind.all
 
-    render json: @kinds
+    render json: @kinds, include: :books
   end
 
   # GET /kinds/1
