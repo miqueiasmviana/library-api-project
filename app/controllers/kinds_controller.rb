@@ -5,7 +5,7 @@ class KindsController < ApplicationController
   def index
     @kinds = Kind.all
 
-    render json: @kinds, include: :books
+    render json: @kinds
   end
 
   # GET /kinds/1
@@ -46,6 +46,6 @@ class KindsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kind_params
-      params.require(:kind).permit(:genre)
+      params.require(:kind).permit(:genre, :book_id)
     end
 end

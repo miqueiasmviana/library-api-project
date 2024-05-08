@@ -50,7 +50,7 @@ namespace :dev do
   desc "Cadastrando Editoras"
    task add_publishing_companies: :environment do
     show_spinner("cadastrando Editoras") do
-      10.times do |i|
+      25.times do |i|
         PublishingCompany.create!(
           company_name: Faker::Book.publisher
         )
