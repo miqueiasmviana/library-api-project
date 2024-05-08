@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_07_210201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kind_id", null: false
-    t.integer "author_id", null: false
+    t.integer "author_id"
     t.integer "publishing_company_id", null: false
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["kind_id"], name: "index_books_on_kind_id"
@@ -79,7 +79,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_07_210201) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "books", "authors"
   add_foreign_key "books", "kinds"
   add_foreign_key "books", "publishing_companies"
 end
