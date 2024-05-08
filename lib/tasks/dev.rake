@@ -37,7 +37,7 @@ namespace :dev do
   desc "Cadastrando Autores"
    task add_authors: :environment do
     show_spinner("cadastrando Autores") do
-      100.times do |i|
+      20.times do |i|
         Author.create!(
           name: Faker::Book.author,
           picture: "https://static.vecteezy.com/ti/vetor-gratis/p3/11186876-simbolo-de-foto-de-perfil-masculino-vetor.jpg",

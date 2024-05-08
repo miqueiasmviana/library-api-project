@@ -11,6 +11,9 @@ gem 'pry', '~> 0.14.2'
 gem "devise_token_auth", ">= 1.2.0", git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'devise-i18n'
 
+# Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
+gem 'rails-i18n', '~> 7.0.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 
