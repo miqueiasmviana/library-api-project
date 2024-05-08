@@ -4,6 +4,9 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+# ActiveModel::Serializer implementation and Rails hooks
+gem 'active_model_serializers', '~> 0.10.0'
+
 # A runtime developer console and IRB alternative with powerful introspection capabilities.
 gem 'pry', '~> 0.14.2'
 
