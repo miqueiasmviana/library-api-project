@@ -10,7 +10,7 @@ class PublishingCompaniesController < ApplicationController
 
   # GET /publishing_companies/1
   def show
-    render json: @publishing_company
+    render json: @publishing_company, include: :books
   end
 
   # POST /publishing_companies
