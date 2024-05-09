@@ -10,9 +10,9 @@ class Book < ApplicationRecord
     super(
       root: true,
       include: {
+        kind: { only: :genre }, 
         author: {only: :name},
-        publishing_company: {only: :company_name},
-        kind: { only: :genre } 
+        publishing_company: {only: :company_name}
       }
     )
   end
