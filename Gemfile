@@ -4,6 +4,9 @@ ruby "3.2.0"
 
 gem "tty-spinner"
 
+# A plugin for versioning Rails based RESTful APIs.
+gem 'versionist', '~> 1.5.0'
+
 # ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers', '~> 0.10.0'
 
