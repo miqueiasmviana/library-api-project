@@ -1,5 +1,7 @@
 module V2
   class PublishingCompaniesController < ApplicationController
+
+    include ErrorSerializer
     before_action :set_publishing_company, only: %i[ show update destroy ]
 
     # GET /publishing_companies
@@ -24,7 +26,7 @@ module V2
       if @publishing_company.save
         render json: @publishing_company, status: :created, location: @publishing_company
       else
-        render json: @publishing_company.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@publishing_company.errors) #, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +35,7 @@ module V2
       if @publishing_company.update(publishing_company_params)
         render json: @publishing_company
       else
-        render json: @publishing_company.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@publishing_company.errors) #, status: :unprocessable_entity
       end
     end
 

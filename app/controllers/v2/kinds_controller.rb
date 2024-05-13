@@ -1,5 +1,7 @@
 module V2
   class KindsController < ApplicationController
+
+    include ErrorSerializer
     before_action :set_kind, only: %i[ show update destroy ]
 
     # GET /kinds
@@ -24,7 +26,7 @@ module V2
       if @kind.save
         render json: @kind, status: :created, location: @kind
       else
-        render json: @kind.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@kind.errors) #, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +35,7 @@ module V2
       if @kind.update(kind_params)
         render json: @kind
       else
-        render json: @kind.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@kind.errors) #, status: :unprocessable_entity
       end
     end
 

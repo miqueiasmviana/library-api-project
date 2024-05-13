@@ -1,5 +1,7 @@
 module V2
   class CommentsController < ApplicationController
+
+    
     before_action :set_comment, only: %i[ show update destroy ]
 
     # GET /comments

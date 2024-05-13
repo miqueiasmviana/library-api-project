@@ -1,5 +1,7 @@
 module V2
   class BooksController < ApplicationController
+
+    include ErrorSerializer
     before_action :set_book, only: %i[ show update destroy ]
 
     # GET /books
@@ -24,7 +26,7 @@ module V2
       if @book.save
         render json: @book, status: :created, location: @book
       else
-        render json: @book.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@book.errors) #, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +35,7 @@ module V2
       if @book.update(book_params)
         render json: @book
       else
-        render json: @book.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@book.errors) #, status: :unprocessable_entity
       end
     end
 

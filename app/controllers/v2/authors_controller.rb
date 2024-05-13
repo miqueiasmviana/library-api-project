@@ -1,5 +1,6 @@
 module V2
   class AuthorsController < ApplicationController
+    include ErrorSerializer
     before_action :set_author, only: %i[ show update destroy ]
 
     # GET /authors
@@ -24,7 +25,7 @@ module V2
       if @author.save
         render json: @author, status: :created, location: @author
       else
-        render json: @author.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@author.errors) #, status: :unprocessable_entity
       end
     end
 
@@ -33,7 +34,7 @@ module V2
       if @author.update(author_params)
         render json: @author
       else
-        render json: @author.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serialize(@author.errors) #, status: :unprocessable_entity
       end
     end
 
