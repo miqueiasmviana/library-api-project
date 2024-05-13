@@ -4,8 +4,11 @@ module V2
 
     # GET /books
     def index
-      @books = Book.all
+      page_number = params[:page].try(:[], :number)
+      per_page = params[:page].try(:[], :size)
 
+      @books = Book.all.page(page_number).per(per_page)
+      
       render json: @books
     end
 

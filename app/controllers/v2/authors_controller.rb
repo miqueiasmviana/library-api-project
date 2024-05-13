@@ -4,7 +4,10 @@ module V2
 
     # GET /authors
     def index
-      @authors = Author.all
+      page_number = params[:page].try(:[], :number)
+      per_page = params[:page].try(:[], :size)
+
+      @authors = Author.all.page(page_number).per(per_page)
 
       render json: @authors
     end

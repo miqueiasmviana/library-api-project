@@ -4,7 +4,10 @@ module V2
 
     # GET /publishing_companies
     def index
-      @publishing_companies = PublishingCompany.all
+      page_number = params[:page].try(:[], :number)
+      per_page = params[:page].try(:[], :size)
+
+      @publishing_companies = PublishingCompany.all.page(page_number).per(per_page)
 
       render json: @publishing_companies
     end

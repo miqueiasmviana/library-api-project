@@ -4,6 +4,8 @@ class Book < ApplicationRecord
   belongs_to :author, optional: true
   belongs_to :publishing_company, optional: true
 
+  paginates_per 15
+
   # accepts_nested_attributes_for :kinds, :author, :publishing_company
 
   def as_json(options={})

@@ -4,7 +4,10 @@ module V2
 
     # GET /kinds
     def index
-      @kinds = Kind.all
+      page_number = params[:page].try(:[], :number)
+      per_page = params[:page].try(:[], :size)
+
+      @kinds = Kind.all.page(page_number).per(per_page)
 
       render json: @kinds
     end
