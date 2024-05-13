@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :publishing_companies
   resources :authors
   resources :kinds
-  resources :books
+
+  resources :books do
+    resource :kind
+    resource :publishing_company
+    resource :author
+  end
   mount_devise_token_auth_for 'User', at: 'auth'
 
   resource :auths, only: [:create]

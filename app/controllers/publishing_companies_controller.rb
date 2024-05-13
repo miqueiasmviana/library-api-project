@@ -41,6 +41,10 @@ class PublishingCompaniesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_publishing_company
+      if params[:book_id]
+        @publishing_company = Book.find(params[:book_id]).publishing_company
+        return @kind
+      end
       @publishing_company = PublishingCompany.find(params[:id])
     end
 

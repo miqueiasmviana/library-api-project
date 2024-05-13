@@ -46,6 +46,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:cover, :title, :description, :pages, :first_published, :kind_id, :publishing_company_id, :author_id)
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end

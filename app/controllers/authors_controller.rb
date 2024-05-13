@@ -41,6 +41,10 @@ class AuthorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_author
+      if params[:book_id]
+        @author = Book.find(params[:book_id]).author
+        return @author
+      end
       @author = Author.find(params[:id])
     end
 

@@ -2,15 +2,15 @@ class BookSerializer < ActiveModel::Serializer
   attributes :id, :cover, :title, :description, :pages, :first_published
 
   belongs_to :kind do
-    link(:related) { kind_url(object.kind.id)}
+    link(:related) { book_kind_url(object.id)}
   end
 
   belongs_to :author, optional: true do
-    link(:related) { author_url(object.author.id)}
+    link(:related) { book_author_url(object.id)}
   end
 
   belongs_to :publishing_company, optional: true do
-    link(:related) { publishing_company_url(object.publishing_company.id)}
+    link(:related) { book_publishing_company_url(object.id)}
   end
   
 
