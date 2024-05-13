@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  
   before_action :set_author, only: %i[ show update destroy ]
 
   # GET /authors

@@ -1,13 +1,28 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :publishing_companies
-  resources :authors
-  resources :kinds
+  api_version(:module => "V1", :path => {:value => "v1"}) do
+    resources :comments
+    resources :publishing_companies
+    resources :authors
+    resources :kinds
+    
+    resources :books do
+      resource :kind
+      resource :publishing_company
+      resource :author
+    end
+  end
 
-  resources :books do
-    resource :kind
-    resource :publishing_company
-    resource :author
+  api_version(:module => "V2", :path => {:value => "v2"}) do
+    resources :comments
+    resources :publishing_companies
+    resources :authors
+    resources :kinds
+    
+    resources :books do
+      resource :kind
+      resource :publishing_company
+      resource :author
+    end
   end
   mount_devise_token_auth_for 'User', at: 'auth'
 
