@@ -1,7 +1,8 @@
 module V2
   class PublishingCompaniesController < ApplicationController
-
     include ErrorSerializer
+
+    # before_action :authenticate_user!
     before_action :set_publishing_company, only: %i[ show update destroy ]
 
     # GET /publishing_companies

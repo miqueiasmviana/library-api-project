@@ -1,6 +1,8 @@
 module V2
   class AuthorsController < ApplicationController
     include ErrorSerializer
+
+    # before_action :authenticate_user!
     before_action :set_author, only: %i[ show update destroy ]
 
     # GET /authors

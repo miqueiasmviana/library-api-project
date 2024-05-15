@@ -1,7 +1,8 @@
 module V2
   class KindsController < ApplicationController
-
     include ErrorSerializer
+
+    # before_action :authenticate_user!
     before_action :set_kind, only: %i[ show update destroy ]
 
     # GET /kinds

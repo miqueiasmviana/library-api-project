@@ -1,6 +1,7 @@
 module V2
   class BooksController < ApplicationController
 
+    # before_action :authenticate_user!
     include ErrorSerializer
     before_action :set_book, only: %i[ show update destroy ]
 

@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   validates_presence_of :author
   validates_presence_of :publishing_company
 
+  has_many :reviews
+  has_many :users, through: :reviews
+  
   belongs_to :kind #, optional: true
   belongs_to :author #, optional: true
   belongs_to :publishing_company #, optional: true
