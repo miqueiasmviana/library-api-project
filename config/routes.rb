@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   end
 
   api_version(:module => "V2", :path => {:value => "v2"}) do
-    resources :comments
-    resources :publishing_companies
+      resources :publishing_companies
     resources :authors
     resources :kinds
     

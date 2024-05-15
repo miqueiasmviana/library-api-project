@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_08_201636) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_15_133200) do
   create_table "authors", force: :cascade do |t|
     t.string "picture"
     t.string "name"
@@ -38,14 +38,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_201636) do
   create_table "books_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
-    t.index ["book_id", "user_id"], name: "index_books_users_on_book_id_and_user_id"
-    t.index ["user_id", "book_id"], name: "index_books_users_on_user_id_and_book_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "rating"
+    t.string "comment"
   end
 
   create_table "kinds", force: :cascade do |t|
