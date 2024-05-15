@@ -17,7 +17,13 @@ module V2
 
     # GET /books/1
     def show
-      render json: @book, include: [:kind, :author, :publishing_company]
+      @book = Book.find(params[:id])
+      
+      render json: @book, include: [
+        :kind, 
+        :author,
+        :publishing_company,
+        :reviews ]
     end
 
     # POST /books

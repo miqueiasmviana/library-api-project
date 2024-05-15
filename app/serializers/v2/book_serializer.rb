@@ -14,7 +14,8 @@ module V2
       link(:related) { v2_book_publishing_company_url(object.id)}
     end
     
-
+    has_many :reviews, only: [:id, :email], optional: true
+    
     def attributes(*args)
       h = super(*args)
       h[:first_published] = object.first_published.to_time.iso8601 unless object.first_published.blank?

@@ -20,8 +20,9 @@ class Book < ApplicationRecord
       root: true,
       include: {
         kind: { only: :genre }, 
-        author: {only: :name},
-        publishing_company: {only: :company_name}
+        author: { only: :name },
+        publishing_company: { only: :company_name },
+        reviews: { include: { users: { only: [:id, :email] } } }
       }
     )
   end

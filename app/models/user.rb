@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  
   has_many :reviews
-  has_many :games, through: :reviews
+  has_many :books, through: :reviews
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
