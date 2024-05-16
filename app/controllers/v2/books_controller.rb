@@ -19,11 +19,7 @@ module V2
     def show
       @book = Book.find(params[:id])
       
-      render json: @book, include: [
-        :kind, 
-        :author,
-        :publishing_company,
-        :reviews ]
+      render json: @book, include: [:kind, :author, :publishing_company, :reviews]
     end
 
     # POST /books

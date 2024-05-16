@@ -15,15 +15,4 @@ class Book < ApplicationRecord
 
   # accepts_nested_attributes_for :kinds, :author, :publishing_company
 
-  def as_json(options={})
-    super(
-      root: true,
-      include: {
-        kind: { only: :genre }, 
-        author: { only: :name },
-        publishing_company: { only: :company_name },
-        reviews: { include: { users: { only: [:id, :email] } } }
-      }
-    )
-  end
 end

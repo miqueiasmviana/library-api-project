@@ -6,18 +6,35 @@ namespace :dev do
       show_spinner("Criando BD...") { %x(rails db:create) }
       show_spinner("Migrando BD...") { %x(rails db:migrate) }
       # %x(rails dev:add_book_currents)
+      %x(rails dev:add_kinds)
       %x(rails dev:add_authors)
       %x(rails dev:add_publishing_companies)
-      %x(rails dev:add_kinds)
       %x(rails dev:add_books)
+      %x(rails dev:add_users)
+      %x(rails dev:add_reviews)
 
     else
       puts "Você não está em ambiente de desenvolvimento!"
     end
   end
 
+  desc "Cadastrando Usuários"
+   task add_users: :environment do
+    show_spinner("Cadastrando Usuários") do
+      40.times do |i|
+        User.create!(
+          name: Faker::Name.name,
+          nickname: Faker::Internet.username,
+          image: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+          email: Faker::Internet.email,
+          password: Faker::Internet.password(min_length: 8)
+        )
+      end
+    end
+  end
+
   desc "Cadastrando os Livros"
-   task add_books: :environment do
+   task add_users: :environment do
     show_spinner("cadastrando livros") do
       100.times do |i|
         Book.create!(
@@ -69,11 +86,24 @@ namespace :dev do
     end
   end
 
+  desc "Cadastrando Reviews"
+   task add_reviews: :environment do
+    show_spinner("cadastrando Reviews") do
+      300.times do |i|
+        Review.create!(
+          rating: rand(1..5),
+          comment: Faker::Lorem.paragraphs(number: 3).join,
+          user_id: User.pluck(:id).sample,
+          book_id: Book.pluck(:id).sample
+        )
+      end
+    end
+  end
+
   def show_spinner(msg_start, msg_end = "Concluído!", &block)
     spinner = TTY::Spinner.new("[:spinner] #{msg_start}")
     spinner.auto_spin
     yield
     spinner.success("(#{msg_end})")
   end
-
 end
