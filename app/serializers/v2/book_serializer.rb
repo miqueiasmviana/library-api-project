@@ -14,7 +14,7 @@ module V2
       link(:related) { v2_book_publishing_company_url(object.id)}
     end
     
-    has_many :reviews, only: [:id, :email], optional: true
+    has_many :reviews, optional: true
     
     def attributes(*args)
       h = super(*args)

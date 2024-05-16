@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
   
+  skip_before_action :verify_authenticity_token
   before_action :set_headers
 
   def set_headers

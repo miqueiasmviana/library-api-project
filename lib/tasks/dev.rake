@@ -27,7 +27,7 @@ namespace :dev do
           nickname: Faker::Internet.username,
           image: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           email: Faker::Internet.email,
-          password: Faker::Internet.password(min_length: 8)
+          password: "12345678"
         )
       end
     end

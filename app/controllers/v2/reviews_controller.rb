@@ -2,6 +2,7 @@ module V2
   class ReviewsController < ApplicationController
 
     include ErrorSerializer
+    before_action :authenticate_user!
     before_action :set_review, only: %i[ show update destroy ]
 
     def index
